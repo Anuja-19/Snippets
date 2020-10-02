@@ -1,4 +1,4 @@
-// Java code for stack operation
+// Java code for stack operation in an Array
 package Snippets.Java;
 import java.util.*;
 
