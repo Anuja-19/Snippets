@@ -4,7 +4,7 @@ class sorting{
 private:
     int i,j,temp,item,lb,ub,mid,pos;
 public:
-    bubblesort(int ar[10],int n){
+    void bubblesort(int ar[10],int n){
         for(i=0;i<=n-1;i++){
             for(j=0;j<=n-1-i;j++){
                 if(ar[j]>ar[j+1]){
@@ -16,7 +16,7 @@ public:
         }
     }
     
-    binarysearch(int ar[10]){
+    void binarysearch(int ar[10]){
         lb=0;
         ub=9;
         pos=0;
@@ -58,12 +58,12 @@ int main(){
 	  }
 
     cout<<"Without Sorted\t";
-    for(i=0;i<=n;i++){
+    for(i=0;i<n;i++){
         cout<<ar[i]<<"\t";
     }
     obj.bubblesort(ar,n);
     cout<<endl<<"        Sorted\t";
-    for(i=0;i<=9;i++){
+    for(i=0;i<n;i++){
         cout<<ar[i]<<"\t";
     }    
     obj.binarysearch(ar);
