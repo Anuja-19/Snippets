@@ -1,4 +1,0 @@
-this is sample file for file handling
-#Git
-#Github
-#Hecktoberfest
