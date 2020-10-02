@@ -15,8 +15,7 @@ class Stack{
 
   public: 
        Stack(){   
-
-           	Top=NULL;
+           Top=NULL;
        }   
 
        void Push(int val){  
@@ -37,13 +36,13 @@ class Stack{
 
           	if(Top==NULL){    
     	         	 cout<<"Underflow\n";     //Underflow condition;
-    	        	 return;          
+    	        	  return;          
           	}   
 
-           	 Node *temp=Top;  
-    	     Top=Top->next; 
-    	     temp->next=NULL; 
-          	 free(temp);
+           Node *temp=Top;  
+    	      Top=Top->next; 
+    	      temp->next=NULL; 
+           free(temp);
         }  
 
         bool is_empty(){   
@@ -63,7 +62,7 @@ class Stack{
 
            	while(temp!=NULL){   
                   cout<<temp->value<<" "; 
-    	       	   temp=temp->next;
+    	       	     temp=temp->next;
            }
 
         }
