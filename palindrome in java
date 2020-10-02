@@ -1,0 +1,25 @@
+package test
+                                             //The function below checks if a string is a palindrome
+                                             //True = Is a palindrome & False = Not a palindrome
+
+
+public boolean isPalindromString(String text){
+    	String reverse = reverse(text);
+      	if(text.equals(reverse))
+    	{
+        	return true;
+      	}
+      
+      	return false;
+    }
+
+                                             //This function returns the reverse String of its input.
+                                            //Ex. if given "hello", it will return "olleh"
+	public String reverse(String input)
+    {     
+		if(input == null || input.isEmpty())
+        {
+			return input;
+        }
+        	return input.charAt(input.length()- 1) + reverse(input.substring(0, input.length() - 1));
+    }
