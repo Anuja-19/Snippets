@@ -4,71 +4,69 @@ using namespace std;
  
 struct  Node
 { 
-   int value; 
-   Node *next; 	
+    int value; 
+    Node *next; 	
 }; 
  
 class Stack{   
 
-  private:   
+  private:    
+      Node *Top;  
 
-     Node *Top;  
+  public: 
+       Stack(){   
 
-  public:  
+           	Top=NULL;
+       }   
 
-    Stack(){   
+       void Push(int val){  
 
-    	Top=NULL;
-    }   
+           	Node *temp_node=new Node();  
 
-    void Push(int val){  
+           	if(!temp_node){ 
+    	        	cout<<"Heap Overflow\n";      //Overflow condition not enough memory to allocate  
+              return;
+           	}  
 
-    	Node *temp_node=new Node();  
+            temp_node->value=val;
+           	temp_node->next=Top; 
+    	       Top=temp_node;
+        }  
 
-    	if(!temp_node){  
-    		cout<<"Heap Overflow\n";     //Overflow condition not enough memory to allocate
-    		return;
-    	}  
+        void Pop(){   
 
-        temp_node->value=val;
-    	temp_node->next=Top; 
-    	Top=temp_node;
-    }  
+          	if(Top==NULL){    
+    	         	 cout<<"Underflow\n";     //Underflow condition;
+    	        	 return;          
+          	}   
 
-    void Pop(){   
+           	 Node *temp=Top;  
+    	     Top=Top->next; 
+    	     temp->next=NULL; 
+          	 free(temp);
+        }  
 
-    	if(Top==NULL){    
-    		cout<<"Underflow\n";     //Underflow condition;
-    		return;          
-    	}   
+        bool is_empty(){   
+            
+               return Top==NULL;
+        } 
 
-    	Node *temp=Top;  
-    	Top=Top->next; 
-    	temp->next=NULL; 
-    	free(temp);
-    }  
+        int Peek(){ 
 
-    bool is_empty(){  
-    	return Top==NULL;
-    } 
+          	if(Top) 
+    	         return Top->value; 
+        }  
 
-    int Peek(){ 
+        void Display(){   
 
-    	if(Top) 
-    		return Top->value; 
-    }  
+           	Node*temp=Top;             //To Preserve Top  
 
-    void Display(){   
+           	while(temp!=NULL){   
+                  cout<<temp->value<<" "; 
+    	       	   temp=temp->next;
+           }
 
-    	Node*temp=Top;             //To Preserve Top  
-
-    	while(temp!=NULL){   
-
-    		cout<<temp->value<<" "; 
-    		temp=temp->next;
         }
-
-    }
 
 }; 
 
@@ -78,7 +76,7 @@ int main(){
 
     for(int i=0;i<6;++i){ 
 
-    	S.Push(i+1); 
+       	S.Push(i+1); 
     }  
 
     cout<<"Stack is ";  
@@ -95,17 +93,17 @@ int main(){
 
     for(int i=0;i<5;++i){ 
 
-    	 S.Pop();
+    	    S.Pop();
     }  
 
     if(S.is_empty())  
-
-    	 cout<<"Stack is empty"; 
+    	 cout<<"Stack is empty";  
     else  
-
     	cout<<"Stack have elements";
 
    return 0;
 
 }
+
+
 
