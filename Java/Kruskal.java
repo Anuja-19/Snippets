@@ -77,9 +77,9 @@ public class Kruskal {
         }
         return A;
     } 
-}
-class CustomComparator implements Comparator<int[]>{
-    public int compare(int[]a,int[]b){
-        return a[2]-b[2];
+    public static class CustomComparator implements Comparator<int[]>{
+        public int compare(int[]a,int[]b){
+            return a[2]-b[2];
+        }
     }
 }
