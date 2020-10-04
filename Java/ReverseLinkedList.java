@@ -1,6 +1,6 @@
 
 
-class LinkedList { 
+class ReverseLinkedList { 
   
      Node head; 
   
@@ -20,13 +20,13 @@ class LinkedList {
     Node reverse(Node node) 
     { 
         Node prev = null; 
-        Node current = node; 
+        Node curr = node; 
         Node next = null; 
-        while (current != null) { 
-            next = current.next; 
-            current.next = prev; 
-            prev = current; 
-            current = next; 
+        while (curr != null) { 
+            next=curr.next; 
+            curr.next=prev; 
+            prev=curr; 
+            curr=next; 
         } 
         node = prev; 
         return node; 
@@ -36,20 +36,20 @@ class LinkedList {
     void printList(Node node) 
     { 
         while (node != null) { 
-            System.out.print(node.data + " "); 
+            System.out.print(node.data+" "); 
             node = node.next; 
         } 
     } 
   
     public static void main(String[] args) 
     { 
-        LinkedList list = new LinkedList(); 
-        list.head = new Node(85); 
-        list.head.next = new Node(15); 
-        list.head.next.next = new Node(4); 
-        list.head.next.next.next = new Node(20); 
+        ReverseLinkedList list = new ReverseLinkedList(); 
+        list.head = new Node(15); 
+        list.head.next = new Node(20); 
+        list.head.next.next = new Node(25); 
+        list.head.next.next.next = new Node(30); 
   
-        System.out.println("Given Linked list"); 
+        System.out.println("Original Linked list"); 
         list.printList(list.head); 
         list.head = list.reverse(list.head); 
         System.out.println(""); 
