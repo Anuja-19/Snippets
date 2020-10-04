@@ -10,7 +10,7 @@ https://forms.gle/GQLw9EHhLGGNf9559
 
 Feel free to share it with your friends.
 
-This is an initiative to create a coders community, if you wish to be a part of core team, please reach out to me on linkedin -
+This is an initiative to create a coders community. If you wish to be a part of core team, please reach out to me on linkedin -
 https://www.linkedin.com/in/anuja-dhole-078099190/ .
 
 
