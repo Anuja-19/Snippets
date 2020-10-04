@@ -18,16 +18,12 @@ class GAURAV
             if (max_ending_here < 0) 
                 max_ending_here = 0; 
         } 
-          
-        return max_so_far; 
+           return max_so_far; 
     } 
-      
-  
     public static void Main () 
     { 
         int [] a = {-2, -3, 4, -1, -2, 1, 5, -3}; 
         Console.Write("Maximum contiguous sum is " + 
                                 maxSubArraySum(a)); 
     } 
-  
 } 
