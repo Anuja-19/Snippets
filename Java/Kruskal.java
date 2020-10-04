@@ -2,11 +2,6 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-class CustomComparator implements Comparator<int[]>{
-    public int compare(int[]a,int[]b){
-        return a[2]-b[2];
-    }
-}
 
 //Kruskal's algorithm to find Minimum spanning tree with Union-Find
 public class Kruskal {
@@ -51,7 +46,7 @@ public class Kruskal {
             int a = arr[0];
             int b= arr[1];
             if(find(a,parent)==find(b,parent)){
-                
+                continue;
             }
             else{
                 union(parent,size,a,b);
@@ -81,5 +76,10 @@ public class Kruskal {
             A=parent[A];
         }
         return A;
-    }    
+    } 
+}
+class CustomComparator implements Comparator<int[]>{
+    public int compare(int[]a,int[]b){
+        return a[2]-b[2];
+    }
 }
