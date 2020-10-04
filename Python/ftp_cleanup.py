@@ -1,13 +1,15 @@
 import time
 import ftputil
 import logging
+from dotenv import load_dotenv
 
+load_dotenv()
 logging.basicConfig(filename='ftpLog.txt',level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 logging.info('start program')
 
-ftp_user = 'username here'
-ftp_pass = 'password here'
-ftp_server = 'ip or dns here'
+ftp_user = os.getenv("ftp_user")
+ftp_pass = os.getenv("ftp_pass")
+ftp_server = os.getenv("ftp_server")
 
 host = ftputil.FTPHost(ftp_server,ftp_user,ftp_pass)
 my_ftppath = '/Export/Daily'
