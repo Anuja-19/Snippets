@@ -152,6 +152,36 @@ class BST {
         } 
     }
 
+    void preorder()
+    {
+        preorderTraversal(this.rootNode);
+    }
+
+    void preorderTraversal(Node rootNode)
+    {
+        if(rootNode != null)
+        {
+            System.out.print(rootNode.data + " => ");
+            preorderTraversal(rootNode.leftSideNode);
+            preorderTraversal(rootNode.rightSideNode);
+        }
+    }
+
+    void postorder()
+    {
+        postorderTraversal(this.rootNode);
+    }
+
+    void postorderTraversal(Node rootNode)
+    {
+        if(rootNode != null)
+        {
+            postorderTraversal(rootNode.leftSideNode);
+            postorderTraversal(rootNode.rightSideNode);
+            System.out.print(rootNode.data + " => ");
+        }
+    }
+
     public static void main(String[] args) {
         // create a new binary search tree
         BST binary_search_tree = CreateBST();
@@ -191,8 +221,14 @@ class BST {
             }
         } while (test != 101);
         sc.close();
-        System.out.println("The BST uptil now is");
+        System.out.println("The BST uptil now is:");
+        System.out.println(" -in Inorder Traversal:");
         binary_search_tree.inorder();
+        System.out.println(" -in Preorder Traversal:");
+        binary_search_tree.preorder();
+        System.out.println(" -in Postorder Traversal:");
+        binary_search_tree.postorder();
+
 
     }
 
