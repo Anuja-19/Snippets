@@ -7,7 +7,7 @@ var maximumSubArray = function(array) {
 
         ans = Math.max(array[i], ans + array[i]);
         sum = Math.max(sum, ans);
-    };
+    }
     return sum;
 
 };
