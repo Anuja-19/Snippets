@@ -1,4 +1,4 @@
-public class Queue<E> {
+public class QueueOperations<E> {
     class Node {
         E data;
         Node next;
