@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<item>
+    <items>
+        <date>
+            <from>2020-03-23</from>
+            <until>2020-03-27</until>
+        </date>
+        <food_parts>
+            <part1>mdma</part1>
+            <part2>lsd</part2>
+            <part3>keta</part3>
+            <part4>speed</part4>
+        </food_parts>
+        <aler_part>
+            <part1>water</part1>
+            <part2>fruitsap</part2>
+            <part3>groensels</part3>
+            <deel4></deel4>
+        </aler_part>
+        <comments>speed snuiven doen we geren</comments>
+        <daymenu_date>2020-03-23</daymenu_date>
+        <daymenu_logo>koe</daymenu_logo>
+    </items>
+</item>
