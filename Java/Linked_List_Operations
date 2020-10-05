@@ -1,0 +1,95 @@
+public class LinkedList<E>{
+    
+    public class Node {
+        E data;
+        Node next;
+
+        public Node (E obj) {
+            this.data = obj;
+            this.next = null;
+        }
+    }
+
+    Node head = null;
+    Node tail = null;
+    
+    public void addFirst (E obj) {
+        Node temp = new Node(obj); 
+        if(head == null) {
+            head = tail = temp;
+            return;
+        }
+        temp.next = head;
+        head = temp;
+        return;
+    }
+
+    public void addLast (E obj) {
+        Node temp = new Node(obj);
+        if(head == null) {
+            head = tail = temp;
+            return; 
+        }
+        tail.next = temp;
+        tail = temp;
+        return;
+    }
+
+    public E removeFirst() {
+        if(head == null) {
+            return null;
+        }
+        E temp = head.data;
+        head = head.next;
+        return temp;
+    }
+    public E removeLast() {
+        if(head == null) {
+            return null;
+        }
+        if(head==tail) {
+            return removeFirst();
+        }
+        Node previous = null;
+        Node current = head;
+        while(current.next != null) {
+            previous = current;
+            current = current.next;
+        }
+        tail = previous;
+        tail.next = null;
+        return current.data;
+    }
+
+    public E remove (E obj) {
+        if(head == null) {
+            return null;
+        }
+        Node previous = null;
+        Node current = head;
+        while(current != null ) {
+            if(((Comparable<E>) current.data).compareTo(obj) == 0) {
+                if(current == head) {
+                    return removeFirst();
+                }
+                E temp = current.data;
+                previous.next = current.next;
+                return temp;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return null;
+    }
+
+    public void display () {
+        if(head == null) {
+            System.out.println("The list is empty.");
+        }
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }
+    }
+}
