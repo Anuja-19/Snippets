@@ -112,7 +112,6 @@ vector<int> getPath(vector< vector <long long>> &cost, vector<int> &B, int i, in
     long long minc = LONG_MAX;
     for(int k = i+1 ; k < j ; k++){
         if( ( cost[i][k]  + cost[k][j] + ((long long)( B[j-1]- B[i-1])) ) == ( cost[i][j] ) ){
-
             ans.push_back(B[k-1]);
             vector<int> left = getPath(cost, B, i, k);
             vector<int> right = getPath(cost, B, k, j);
@@ -162,12 +161,5 @@ vector<int> Solution::rodCut(int A, vector<int> &B) {
     
     // backtracking the dp array to find the actual cutting order
     return getPath(cost, B, 1, ptcnt);
-    
 }
-
-
-
-
-
-
 
