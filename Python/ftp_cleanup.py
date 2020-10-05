@@ -28,4 +28,3 @@ for name in names:
 logging.info('ftp connection closed')
 host.close()
 
-    
