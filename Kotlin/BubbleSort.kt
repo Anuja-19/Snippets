@@ -2,8 +2,8 @@ import java.util.stream.Stream
 import kotlin.random.Random
 
 fun bubbleSort(array: IntArray) {
-    for (pass in 0 until (array.size - 1)) {
-        for (currentPosition in 0 until (array.size - pass - 1)) {
+    for (pass in 0 until array.size - 1) {
+        for (currentPosition in 0 until array.size - pass - 1) {
             if (array[currentPosition] > array[currentPosition + 1]) {
                 val temp = array[currentPosition]
                 array[currentPosition] = array[currentPosition + 1]

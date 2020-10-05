@@ -4,14 +4,14 @@ import kotlin.random.Random
 
 
 private fun buildMaxHeap(array: IntArray) {
-    for (i in ((array.size / 2) - 1) downTo 0) {
+    for (i in array.size / 2 - 1 downTo 0) {
         maxHeap(array, i)
     }
 }
 
 private fun maxHeap(array: IntArray, rootIndex: Int, heapSize: Int = array.size - 1) {
-    val leftChildIndex = (2 * rootIndex) + 1
-    val rightChildIndex = (2 * rootIndex) + 2
+    val leftChildIndex = 2 * rootIndex + 1
+    val rightChildIndex = 2 * rootIndex + 2
     var largestElementIndex = rootIndex
 
     if (leftChildIndex <= heapSize && array[leftChildIndex] > array[rootIndex]) {
