@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+// EXPRESSION TREE
 struct node
 {
     char data;
@@ -49,7 +50,6 @@ void preorder(struct node *root)
         preorder(root->left);
         preorder(root->right);
     }
-
 }
 
 void inorder(struct node *root)
@@ -60,7 +60,6 @@ void inorder(struct node *root)
         printf("%c ",root->data);
         inorder(root->right);
     }
-
 }
 
 void postorder(struct node *root)
@@ -82,7 +81,7 @@ struct node *create_expression_tree(char *exp) // pass the postfix expression
 
     struct node *temp;
 
-    while(exp[i] != '\0')
+    while(exp[i] != '\0') // use example ABC*+ and trace
     {
         ch = exp[i];
         temp = (struct node *)malloc(sizeof(struct node));
@@ -112,13 +111,13 @@ int eval(struct node *root) // recursive function
         case '-': return(eval(root->left) - eval(root->right));
         case '*': return(eval(root->left) * eval(root->right));
         case '/': return(eval(root->left) / eval(root->right));
-        default: printf("%c = ",root->data);
+        default: printf("%c = \n",root->data);
         scanf("%d",&x);
         return x;
     }
 }
 
-void push(struct node **s, int *t, struct node *temp)
+void push(struct node **s, int *t, struct node *temp) // s-stack, t-top, ** as it is stack of nodes
 {
     ++(*t);
     s[*t] = temp;
