@@ -19,6 +19,9 @@ public class InfixToPostfix
        
         case '^': 
             return 3; 
+            
+        default:
+            return;
         } 
         return -1; 
     } 
