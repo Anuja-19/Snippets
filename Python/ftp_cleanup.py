@@ -7,6 +7,7 @@ load_dotenv()
 logging.basicConfig(filename='ftpLog.txt',level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 logging.info('start program')
 
+#add your credentials in a .env file
 ftp_user = os.getenv("ftp_user")
 ftp_pass = os.getenv("ftp_pass")
 ftp_server = os.getenv("ftp_server")
