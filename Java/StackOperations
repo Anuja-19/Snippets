@@ -1,0 +1,51 @@
+public class Stack<E> {
+    
+    class Node {
+        E data;
+        Node next;
+
+        public Node (E obj) {
+            data = obj;
+            next = null;
+        }
+    }
+
+    private Node head = null;
+    private Node tail = null;
+
+    public void push(E obj) {
+        Node temp = new Node(obj);
+        if(head==null) {
+            head = tail = temp;
+            return;
+        }
+        temp.next = head;
+        head = temp;
+    }
+
+    public E pop() {
+        E temp = head.data;
+        head = head.next;
+        return temp;
+    }
+
+    public E peek() {
+        return head.data;
+    }
+
+    public void display() {
+        if(head == null) {
+            System.out.println("The list is empty.");
+        }
+        Node temp = head;
+        while(temp != null) {
+            System.out.print(temp.data+" ");
+            temp = temp.next;
+        }        
+    }
+
+    public boolean isEmpty() {
+        return head==null;
+    }
+
+}
