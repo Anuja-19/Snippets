@@ -2,8 +2,12 @@ from __future__ import division
 from __future__ import print_function
 
 import glfw
-from OpenGL.GL import *
-from OpenGL.GLU import *
+
+from OpenGL.GL import glColor3fv
+# if code doesn't work, uncomment the below lines and comment the above line
+#from OpenGL.GL import *
+#from OpenGL.GLU import *
+
 import numpy as np
 from math import floor
 
