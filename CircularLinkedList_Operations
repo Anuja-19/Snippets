@@ -1,0 +1,298 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *start=NULL;
+
+void create_List();
+void display();
+void insert_Begin(int value);
+void insert_End(int value);
+void insert_After(int number,int value);
+void delete_Begin();
+void delete_End();
+void delete_After(int number);
+void search(int value);
+
+void create_List()
+{
+    int value;  
+    struct node *new_node;
+    struct node *current;
+    printf("\n\nTo End : Enter -1\n\n");
+	printf("Enter the Value : ");
+	scanf("%d",&value);
+
+	while(value!=-1)
+	{
+		new_node=(struct node *)malloc(sizeof(struct node*));
+		new_node->data=value;
+        if(start==NULL)
+		{
+            start=new_node;
+			start->next=new_node;
+        }
+		else
+		{   
+            current=start;
+            while (current->next != start)
+	        {
+	            current = current -> next;
+	        }
+	        current->next = new_node; 
+	        new_node->next = start;
+        }
+        printf("Enter the Value : ");
+	    scanf("%d",&value);
+    }
+}
+
+void display()
+{
+	struct node *ptr;
+    ptr=start;
+    if(ptr==NULL)
+    {
+        printf("List is Empty.");
+        return;
+    }
+    else
+	{
+        printf("The List is as follows \n");
+    	do
+	    {
+		    printf("%d\t",ptr->data);
+		    ptr=ptr->next;
+	    }while(ptr!=start);
+    }
+    sleep(5); 
+}
+
+void insert_Begin(int value)
+{
+    struct node *new_node,*ptr;
+    new_node = (struct node*) malloc(sizeof(struct node*));
+    new_node->data = value;
+    ptr=start;
+    if(ptr == NULL) 
+    {
+        start = new_node;
+        new_node->next = start;
+        return;
+    }
+    while(ptr->next != start)
+    {
+        ptr = ptr->next;
+    }
+    new_node->next = start;
+    ptr->next = new_node;
+    start = new_node;
+}
+
+void insert_End(int value)
+{
+	struct node *ptr, *new_node;
+	new_node=(struct node*)malloc(sizeof(struct node*));
+	new_node->data=value;
+    new_node->next=start;
+	ptr=start;
+	while(ptr->next!=start)
+	{	
+        ptr=ptr->next;
+    }
+	ptr->next=new_node;
+}
+
+void insert_After(int number, int value)
+{
+	struct node *ptr, *new_node, *preptr;
+	ptr=start;
+	new_node=(struct node*)malloc(sizeof(struct node*));
+	new_node->data=value;
+	ptr=start;
+	while(preptr->data!=number)
+	{
+		preptr=ptr;
+		ptr=ptr->next;
+	}
+	new_node->next=ptr;
+	preptr->next=new_node;
+}
+
+void delete_Begin()
+{
+	struct node *ptr;
+	ptr=start;
+    if(ptr==NULL)
+    {
+        printf("The List is Empty, No Node to delete\n");
+        return;
+    }
+    if(ptr->next == start)
+    {
+        start=NULL;
+        free(ptr);
+        return;
+    }
+    while(ptr->next!=start)
+    {
+        ptr = ptr->next;
+    }
+    ptr->next=start->next;
+    free(start);
+    start=ptr->next;    
+}
+
+void delete_End()
+{
+    struct node *ptr,*preptr;
+    ptr=start;
+    preptr=ptr;
+    if(ptr==NULL)
+    {
+        printf("The List is Empty, No Node to delete\n");
+        return;
+    }
+    if (start ->next == start)
+    {
+        free(start);
+        start = NULL;
+        return;
+    }   
+    while(ptr->next!=start)
+    {
+        preptr=ptr;
+        ptr=ptr->next;
+    }
+    preptr->next=start;
+    free(ptr);
+}
+
+void delete_After(int number)
+{
+    struct node *ptr,*preptr;
+    ptr=start;
+    preptr=ptr;
+    if(ptr==NULL)
+    {
+        printf("The List is Empty, No Node to delete\n");
+        return;
+    }
+    if(ptr == start && ptr == preptr->next)
+    {
+        printf("\nDeletion not possible.\n");
+        return;
+    }
+    do
+    {
+        preptr=ptr;
+        ptr=ptr->next;
+    }while(preptr->data!=number && ptr!=start);
+    preptr->next=ptr->next;
+    free(ptr);
+}
+
+void search(int value)
+{
+    struct node *ptr;
+    ptr=start;
+    if (ptr == NULL)
+    {
+        printf("Element %d doesnt exist as List is Empty.\n",value);
+        sleep(4);
+        return;
+    }
+    int pos=1;
+    while(ptr)
+    {
+        if(ptr->data==value)
+        {
+            printf("Element %d found at Position %d\n",value,pos);
+            sleep(4);
+            return;
+        }
+        if(ptr->next == start)
+        {
+        break;
+        }
+        ptr=ptr->next;
+        pos=pos+1;
+    }
+    printf("Element %d doesn't exist\n.",value);
+    sleep(4);
+}
+
+void main()
+{
+    int choice,val,num;
+ 
+    while(1)
+    {
+        system("cls");
+        printf("\nCircular LinkedList \n\n");
+        printf("0. Create a List\n");
+        printf("1. Insert Node at the beginning\n");
+        printf("2. Insert Node at the End\n");
+        printf("3. Insert Node after an entered value\n");
+        printf("4. Delete Node from the beginning\n");
+        printf("5. Delete Node from the end\n");
+        printf("6. Delete Node after an entered value\n");
+        printf("7. Search a value in the list\n");
+        printf("8. Display the list\n");
+        printf("9. Exit\n");
+        printf("Enter Your Choice : ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 0:
+                create_List();
+                break;
+            case 1:
+                printf("\nEnter the Value to be inserted at the Beginning : ");
+                scanf("%d",&val);
+                insert_Begin(val);
+                break;
+            case 2:
+                printf("\nEnter the Value to be inserted at the End : ");
+                scanf("%d",&val);
+                insert_End(val);
+                break;
+            case 3:
+                printf("\nEnter Value after which node will be Inserted : ");
+                scanf("%d",&num);
+                printf("\nEnter the Value to be inserted : ");
+                scanf("%d",&val);
+                insert_After(num,val);
+                break;       
+            case 4:
+                delete_Begin();
+                break;
+            case 5:
+                delete_End();
+                break;
+            case 6:
+                printf("\nEnter the Value after which node has to be Deleted : ");
+                scanf("%d",&num);
+                delete_After(num);
+                break;
+            case 7:
+                printf("\nEnter the Value to be Searched : ");
+                scanf("%d",&val);
+                search(val);
+                break;
+            case 8:
+                display();
+                break;
+            case 9:
+                exit(0);
+                break;
+            default:
+                printf("\nInvalid Choice\n");
+                break;
+        }
+    }
+}
