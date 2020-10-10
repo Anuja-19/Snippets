@@ -1,13 +1,12 @@
-library(R6)
-Stack<-R6Class("Stack",list(
-        stack = c(),
+Stack<-R6::R6Class("Stack",list(
+        stack = NULL,
         push = function(x) {
                 self$stack <- append(self$stack,x)
         },
         pop = function() {
                 if(length(self$stack)>0) {
                         top <- self$stack[1]
-                        self$stack <- self$stack[-c(1)]
+                        self$stack <- self$stack[-1]
                         return(top)
                 }
                 else
@@ -24,7 +23,7 @@ Stack<-R6Class("Stack",list(
 # Some Basic Operations
 t<-Stack$new()
 t$push(1)
-t$push(array(c(2)))
+t$push(2)
 t$push("Element")
 t$display()
 t$size()
