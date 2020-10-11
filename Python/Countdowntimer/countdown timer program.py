@@ -67,10 +67,3 @@ else:
         
         #Decrement the total number of seconds by 1
         total=total-1
-
-
-
-
-
-
-
