@@ -1,35 +1,120 @@
-class LinkedListNode
-    attr_accessor :value, :next_node
+class Node
+  attr_accessor :node, :next
   
-    def initialize(value, next_node=nil)
-      @value = value
-      @next_node = next_node
-    end
+  def initialize(node)
+    @node = node
   end
+end
+
+####
+# add - inserts the specified element at the specified position, returns true on success
+# addLast - inserts the specified element at the end of the list
+# remove - removes specified element, returns true on success
+# removeAt - removes element at specified index
+# clear - remove all elements
+# print - print elements in list
+# reverse - reverses the linkedlist
+####
+class LinkedList
+  attr_accessor :head
   
-  def print_values(list_node)
-    print "#{list_node.value} --> "
-    if list_node.next_node.nil?
-      print "nil\n"
-      return
+  def initialize(val)
+    @head = Node.new(val)
+  end
+
+  def add(val)
+    current = @head
+
+    while current.next != nil
+      current = current.next
+    end
+    current.next = Node.new(val)
+  end
+
+  def add_at(val, pos)
+    current = @head
+    previous = nil
+    if pos == 0
+      new_head = Node.new(val)
+      new_head.next = @head
+      @head = new_head
     else
-      print_values(list_node.next_node)
+      (0...pos).each do |i|
+        return false if current.nil?
+        previous = current
+        current = current.next
+      end
+      next_node = Node.new(val)
+      previous.next = next_node
+      next_node.next = current
     end
+    return true
   end
-  def reverse_list(list, previous=nil)
-    current_head = list.next_node
-    list.next_node = previous
-    if current_head
-      reverse_list(current_head, list)
+
+  def remove(val)
+    current = @head
+    temp = nil
+    previous = nil
+    while current != nil
+      if current.node == val
+        temp = current.next
+        previous.next = temp
+        return true
+      else
+        previous = current
+        current = current.next
+      end
+    end
+
+    return false
+  end
+
+  def remove_at(pos)
+    current = @head
+    previous = nil
+    if pos == 0
+      temp = @head.next
+      @head = temp
     else
-      list
+      (0...pos).each do
+        return false if current.nil?
+        previous = current
+        current = current.next
+      end
+      previous.next = current.next
     end
+
+    return true
   end
-  
-  node1 = LinkedListNode.new(37)
-  node2 = LinkedListNode.new(99, node1)
-  node3 = LinkedListNode.new(12, node2)
-  print_values(node3)
-  puts "-------"
-  revlist = reverse_list(node3)
-  print_values(revlist)
+
+  def clear
+    @head.node = nil
+    @head.next = nil
+  end
+
+  def print
+    msg = ''
+    temp = nil
+    current = @head
+    while current != nil
+      msg << "#{current.node} -> "
+      current = current.next
+    end
+
+    return msg[0..-4]
+  end
+
+  def reverse
+    previous = nil
+    current = @head
+
+    while current != nil
+      next_node = current.next
+      current.next = previous
+      previous = current
+      current = next_node
+    end
+
+    @head = previous
+  end
+end
