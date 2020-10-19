@@ -1,36 +1,39 @@
 // Program to find max subarray sum using kandanes algorithm.
 #include <iostream>
+#include <vector>
 using namespace std;
-int kandane(int arr[] , int n);
+int kandane(vector<int>& nums);
 int main()
 {
 	// getting the length of arr followed by arr elements.
 	int n;
 	cin>>n;
-	int arr[n];
+	vector<int>& nums
 	for (int i = 0; i < n; i++)
 	{
-		cin >> arr[i];
+		cin >> nums[i];
 	}
-	int max_sum_subarray = kandane(arr , n );
+	int max_sum_subarray = kandane(nums);
 	cout<<"max_sum_subarray = " << max_sum_subarray ; 	
 }
 
-int kandane(int arr[] , int n)
-{
-	int max_so_far = 0;
-	int max_upto_here = 0;
-	for (int i = 0; i < n; i++)
-	{
-		max_upto_here += arr[i];
-		if (max_upto_here<0)
-		{
-			max_upto_here = 0;
-		}
-		if (max_so_far < max_upto_here)
-		{
-			max_so_far = max_upto_here;
-		}	
-	}
-	return max_so_far;
-}
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int max = nums[0];
+        int local_max = nums[0];
+        for(int i = 1 ; i < nums.size() ; i++)
+        {
+            if((local_max + nums[i])> nums[i]) 
+                local_max+=nums[i];
+            else
+                local_max = nums[i];
+            
+            if(local_max>max) max = local_max;
+        }
+        
+        
+        return max;
+        
+    }
+};
