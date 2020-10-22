@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class WaterJug_3306 {
+	/*Waterjug Program*/
 
 	void waterjug(int j1, int j2, int[] soln) {
 		int st = 1;
