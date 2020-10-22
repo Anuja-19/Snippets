@@ -12,6 +12,7 @@ public class DBScan {
 		finalclu[nclu] = new LinkedHashSet<Integer>();
 		ArrayList<Integer> outlier=new ArrayList<Integer>();
 		while (vis < n) {
+            
 			ArrayList<Integer> cluster = new ArrayList<Integer>();
 			int pt = input.get(no);
 			for (int i = 0; i < n; i++) {
