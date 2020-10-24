@@ -26,8 +26,6 @@ void build_maxheap (vector<int> Arr)
         max_heapify (Arr, i,N) ;
     }
 }
-
-
 void heap_sort(vector<int> &Arr)
 {
     int heap_size = Arr.size();
@@ -39,13 +37,12 @@ void heap_sort(vector<int> &Arr)
         max_heapify(Arr, 1, heap_size);
     }
 }
-int main() {
+int main() 
+{
 	int n=0;
 	cin>>n;
 	vector<int>a(n);
 	for(int i=0;i<n;++i) cin>>a[i];
 	heap_sort(a);
 	for(auto x: a) cout<<x<<" ";
-	
-	
 }
