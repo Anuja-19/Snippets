@@ -30,7 +30,6 @@ void inorder(Node *root){
 	inorder(root->right);
 }
 void preorder(Node *root){
-	
 	if(root==NULL) return;    //check if node current node is the end
 	
 	cout<<root->data<<" ";
