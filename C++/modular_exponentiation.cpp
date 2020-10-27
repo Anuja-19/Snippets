@@ -4,7 +4,6 @@ using namespace std;
 ll mod=1e9+7;
 ll solve(ll a,ll b)
 {
- 
     if(b==0)
         return 1;
     a=a%mod;
