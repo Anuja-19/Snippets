@@ -1,4 +1,4 @@
-fun insertionSort(array: Array<Int>) {
+fun insertionSort(array: IntArray) {
     for (i in array.indices) {
         val tmp = array[i]
         var j = i
@@ -11,7 +11,7 @@ fun insertionSort(array: Array<Int>) {
 }
 
 fun main() {
-    var input = arrayOf(42,27,5,7,0,15,2,99,1)
+    var input = intArrayOf(42,27,5,7,0,15,2,99,1)
     print("Original list: ")
     input.iterator().forEach { print("$it ") }
     println()
